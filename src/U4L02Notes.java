@@ -11,7 +11,7 @@ import javax.swing.UIManager;
 
 public class U4L02Notes extends JFrame {
 	
-	public static final String FILE_NAME = "/zoe.jpg";
+	public static final String FILE_NAME = "ellispic";
 	
 	public U4L02Notes(){
 		initGUI();
