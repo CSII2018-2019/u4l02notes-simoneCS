@@ -11,11 +11,16 @@ import javax.swing.JPanel;
 public class ImagePanel extends JPanel {
 	
 	//what variables are needed?
+	private int width; 
+	private int height; 
 	
 	BufferedImage image = null;
 	
-	public ImagePanel(){
+	public ImagePanel(String fn){
 		//add code here
+		image = readImageFile(this, fn); //fn = file name 
+		width = image.getWidth(); 
+		height = image.getHeight();
 	}
 	
 	public static BufferedImage readImageFile(Object requestor, String fileName){
@@ -28,6 +33,10 @@ public class ImagePanel extends JPanel {
 			JOptionPane.showMessageDialog(null, message);
 		}
 		return image;
+	}
+	
+	public void paintComponent(Graphics g) { 
+		g.drawImage(image, 0, 0, null); 
 	}
 
 }

@@ -32,7 +32,9 @@ public class U4L02Notes extends JFrame {
 		titlePanel.add(titleLabel);
 		add(titlePanel, BorderLayout.PAGE_START);
 
-
+		//image panel
+		ImagePanel imgPanel = new ImagePanel(FILE_NAME); 
+		add(imgPanel, BorderLayout.CENTER); 
 	}
 	
 	
