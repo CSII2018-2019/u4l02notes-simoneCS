@@ -60,13 +60,46 @@ public class ImagePanel extends JPanel {
 				
 				//calculate average 
 				//leave alpha value alone it's transparency 
-				int avg = (r + g + b)/3; 
+				//int avg = (r + g + b)/3; 
 				
 				//reset our pixel 
-				p = (a <<24) | (avg<<16) | (avg<<8) | (avg<<0); //so different shades of grey 
+				//would be avg if doing grayscale 
+				p = (a <<24) | (255 - r<<16) | (2555 - b<<8) | (255 - g<<0); //so different shades of grey 
 				image.setRGB(x, y, p); 
 			}
 		}
 	}
-
+	
+	public void convertToSepia() { 
+		for (int x= 0; x < width; x++) { 
+			for (int y= 0; y < height; y++) { 
+				
+				int p = image.getRGB(x,y); 
+				
+				int a = (p>>24) & 0xff; 
+				int r = (p>>16) & 0xff; 
+				int g = (p>>8) & 0xff; 
+				int b = (p>>0) & 0xff;
+				
+				int newRed = (int) (0.393 * r + 0.769 * g + 0.189*b); 
+				int newGreen = (int)(0.349 * r + 0.686 * g + 0.168* b); 
+				int newBlue = (int) (0.272 * r + 0.534 * g + 0.131*b); 
+				
+				if(newRed > 255) { 
+					newRed = 255; 
+				}
+				
+				if(newGreen > 255) { 
+					newGreen = 255; 
+				}
+				
+				if(newBlue > 255) { 
+					newBlue = 255; 
+				}
+				
+				p = (a <<24) | (newRed <<16) | (newBlue<<8) | (newGreen <<0);  
+				image.setRGB(x, y, p);
+	}
+		}
+	}
 }
