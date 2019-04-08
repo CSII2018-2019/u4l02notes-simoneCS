@@ -46,5 +46,27 @@ public class ImagePanel extends JPanel {
 		Dimension size = new Dimension(width, height); 
 		return size; 
 	}
+	
+	public void convertToGrayscle() { 
+		for (int x= 0; x < width; x++) { 
+			for (int y= 0; y < height; y++) { 
+				//get value for 1 pixel 
+				int p = image.getRGB(x,y);
+				
+				int a = (p>>24) & 0xff; //notation for &
+				int r = (p>>16) & 0xff; 
+				int g = (p>>8) & 0xff; 
+				int b = (p>>0) & 0xff; 
+				
+				//calculate average 
+				//leave alpha value alone it's transparency 
+				int avg = (r + g + b)/3; 
+				
+				//reset our pixel 
+				p = (a <<24) | (avg<<16) | (avg<<8) | (avg<<0); //so different shades of grey 
+				image.setRGB(x, y, p); 
+			}
+		}
+	}
 
 }
