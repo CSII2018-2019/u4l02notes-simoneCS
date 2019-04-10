@@ -97,7 +97,7 @@ public class ImagePanel extends JPanel {
 					newBlue = 255; 
 				}
 				
-				p = (a <<24) | (newRed <<16) | (newBlue<<8) | (newGreen <<0);  
+				p = (a <<24) | (newRed <<16) | (newGreen<<8) | (newBlue <<0);  
 				image.setRGB(x, y, p);
 	}
 		}
