@@ -11,7 +11,7 @@ import javax.swing.UIManager;
 
 public class U4L02Notes extends JFrame {
 	
-	public static final String FILE_NAME = "/bio.jpg";
+	public static final String FILE_NAME = "/sunset.jpg";
 	
 	public U4L02Notes(){
 		initGUI();
@@ -41,9 +41,13 @@ public class U4L02Notes extends JFrame {
 		grayImgPanel.convertToGrayscle();
 		add(grayImgPanel, BorderLayout.LINE_END); 
 		
-		ImagePanel sepiaImgPanel = new ImagePanel(FILE_NAME); 
+		/*ImagePanel sepiaImgPanel = new ImagePanel(FILE_NAME); 
 		sepiaImgPanel.convertToSepia(); 
-		add(sepiaImgPanel, BorderLayout.AFTER_LAST_LINE); 
+		add(sepiaImgPanel, BorderLayout.AFTER_LAST_LINE); */
+		
+		ImagePanel somethingImgPanel = new ImagePanel(FILE_NAME); 
+		somethingImgPanel.convertToSomething(); 
+		add(somethingImgPanel, BorderLayout.AFTER_LAST_LINE);
 	}
 	
 	
